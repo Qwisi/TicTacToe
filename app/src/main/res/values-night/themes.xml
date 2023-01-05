@@ -12,5 +12,42 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:background">@color/backColorDark</item>
     </style>
+
+    <style name="button">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:backgroundTint">@color/buttonColorDark</item>
+        <item name="android:textColor">@color/textColorDark</item>
+    </style>
+
+    <style name="text">
+        <item name="android:textColor">@color/textColorDark</item>
+    </style>
+
+    <style name="verticalLine">
+        <item name="android:background">@color/textColorDark</item>
+        <item name="android:layout_width">5dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="horizontalLine">
+        <item name="android:background">@color/textColorDark</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">5dp</item>
+    </style>
+
+    <style name="column">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">@color/textColorDark</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:onClick">boardTapped</item>
+    </style>
+
 </resources>
