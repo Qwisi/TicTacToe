@@ -30,6 +30,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.rank.setOnClickListener {
+            startActivity(Intent(this, Ranking::class.java))
+        }
 
         binding.exit.setOnClickListener {
             val intent = Intent(Intent.ACTION_MAIN)
