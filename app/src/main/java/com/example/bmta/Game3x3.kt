@@ -2,6 +2,7 @@ package com.example.bmta
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
@@ -210,4 +211,56 @@ class Game3x3 : AppCompatActivity(){
         const val NOUGHT = "O"
         const val CROSS = "X"
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        outState.putString("turn", binding.turnTV.text.toString())
+
+        outState.putString("a1", binding.a1.text.toString())
+        outState.putString("a2", binding.a2.text.toString())
+        outState.putString("a3", binding.a3.text.toString())
+        outState.putString("b1", binding.b1.text.toString())
+        outState.putString("b2", binding.b2.text.toString())
+        outState.putString("b3", binding.b3.text.toString())
+        outState.putString("c1", binding.c1.text.toString())
+        outState.putString("c2", binding.c2.text.toString())
+        outState.putString("c3", binding.c3.text.toString())
+
+        outState.putInt("crossesScore", scoreData.crossesScore)
+        outState.putInt("noughtsScore", scoreData.noughtsScore)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+
+        binding.turnTV.text = savedInstanceState.getString("turn")
+
+        binding.a1.text = savedInstanceState.getString("a1")
+        binding.a2.text = savedInstanceState.getString("a2")
+        binding.a3.text = savedInstanceState.getString("a3")
+        binding.b1.text = savedInstanceState.getString("b1")
+        binding.b2.text = savedInstanceState.getString("b2")
+        binding.b3.text = savedInstanceState.getString("b3")
+        binding.c1.text = savedInstanceState.getString("c1")
+        binding.c2.text = savedInstanceState.getString("c2")
+        binding.c3.text = savedInstanceState.getString("c3")
+
+        scoreData.crossesScore = savedInstanceState.getInt("crossesScore")
+        scoreData.noughtsScore = savedInstanceState.getInt("noughtsScore")
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

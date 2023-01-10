@@ -11,7 +11,7 @@
         style="@style/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="10dp"
         android:text="Tic Tac Toe"
         android:textSize="40sp"
         app:layout_constraintHorizontal_bias="0.497"
@@ -21,7 +21,7 @@
 
     <Button
         android:id="@+id/newGame"
-        style="@style/button"
+        style="@style/landscapeButton"
         android:text="Game 3x3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,7 @@
 
     <Button
         android:id="@+id/changeMode"
-        style="@style/button"
+        style="@style/landscapeButton"
         android:text="Change mode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
 
     <Button
         android:id="@+id/rank"
-        style="@style/button"
+        style="@style/landscapeButton"
         android:text="Results"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
 
     <Button
         android:id="@+id/exit"
-        style="@style/button"
+        style="@style/landscapeButton"
         android:text="Exit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

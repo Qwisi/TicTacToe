@@ -7,13 +7,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bmta.databinding.ActivityRankingBinding
 import com.example.bmta.model.Player
 import com.example.bmta.model.RankingAdapter
-import org.json.JSONArray
-import org.json.JSONObject
-
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class Ranking : AppCompatActivity() {
 
-    private lateinit var binding : ActivityRankingBinding
+    private lateinit var binding: ActivityRankingBinding
     var playerList = arrayListOf<Player>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,18 +35,10 @@ class Ranking : AppCompatActivity() {
 
     }
 
-    private fun readPlayers(){
+    private fun readPlayers() {
         val jsonString: String = assets.open("players.json").bufferedReader().use { it.readText() }
-
-        val obj = JSONObject(jsonString)
-        val playersArray: JSONArray = obj.getJSONArray("players")
-        for (i in 0 until playersArray.length()) {
-            val userDetail = playersArray.getJSONObject(i)
-            playerList.add(
-                Player(userDetail.getString("name"),
-                Integer.parseInt(userDetail.getString("score")))
-            )
-        }
+        val playerType = object : TypeToken<List<Player>>() {}.type
+        playerList = Gson().fromJson<ArrayList<Player>>(jsonString, playerType)
     }
 
 }

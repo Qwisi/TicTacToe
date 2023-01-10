@@ -17,7 +17,7 @@ class RankingAdapter(private var playerList: List<Player>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val player = playerList[position]
+        val player = playerList.sortedByDescending  { it.score }[position]
         holder.viewName.text = player.name
         holder.viewScore.text = player.score.toString()
         holder.viewRank.text = (position + 1).toString() // set rank starting from 1

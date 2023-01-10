@@ -1,5 +1,4 @@
-{
-  "players": [
+[
     { "name": "Maria", "score": 17 },
     { "name": "John", "score": 8 },
     { "name": "David", "score": 12 },
@@ -7,12 +6,11 @@
     { "name": "Mike", "score": 3 },
     { "name": "Sarah", "score": 19 },
     { "name": "Chris", "score": 9 },
-    { "name": "Taylor", "score": 20 },
+    { "name": "Taylor", "score": 21 },
     { "name": "Rachel", "score": 6 },
     { "name": "Kevin", "score": 14 },
     { "name": "Amanda", "score": 7 },
     { "name": "Adam", "score": 10 },
     { "name": "Emily", "score": 5 },
     { "name": "Matt", "score": 16 }
-  ]
-}
+]
