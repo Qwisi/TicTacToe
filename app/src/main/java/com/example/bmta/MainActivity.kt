@@ -6,10 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.bmta.databinding.ActivityMainBinding
+import com.example.bmta.view.MyDialogFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.newGame.setOnClickListener {
-            startActivity(Intent(this, Game3x3::class.java))
+            MyDialogFragment().show(supportFragmentManager, "player_name_dialog")
         }
 
         binding.changeMode.setOnClickListener {
@@ -39,7 +40,5 @@ class MainActivity : AppCompatActivity() {
             intent.addCategory(Intent.CATEGORY_HOME)
             startActivity(intent)
         }
-
     }
-
 }

@@ -1,16 +1,13 @@
 package com.example.bmta
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bmta.databinding.ActivityGame3x3Binding
 import com.example.bmta.model.ScoreData
-import com.google.gson.Gson
-import java.io.InputStream
+import com.example.bmta.model.WriteAndRead
 
 class Game3x3 : AppCompatActivity(){
 
@@ -23,11 +20,12 @@ class Game3x3 : AppCompatActivity(){
     private var firstTurn = Turn.CROSS
     private var currentTurn = Turn.CROSS
 
-    private var scoreData = ScoreData(0, 0)
+    private var scoreData: ScoreData = ScoreData(0, 0)
 
     private var boardList = mutableListOf<Button>()
 
-    private val fileName = "scores.json"
+    private var firstPlayer : String = ""
+    private var secondPlayer : String = ""
 
     private lateinit var binding : ActivityGame3x3Binding
 
@@ -35,44 +33,19 @@ class Game3x3 : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivityGame3x3Binding.inflate(layoutInflater)
         setContentView(binding.root)
+
         initBoard()
-        readScores()
+
         binding.back.setOnClickListener {
-            //updateScores()
-            startActivity(Intent(this, MainActivity::class.java))
+            WriteAndRead(firstPlayer, secondPlayer).updateScores(this, scoreData)
         }
     }
-
-    private fun readScores(){
-        val inputStream : InputStream = assets.open(fileName)
-        val jsonString: String = inputStream.bufferedReader().use { it.readText() }
-        val gson = Gson()
-        val scores = gson.fromJson(jsonString, ScoreData::class.java)
-
-        scoreData.crossesScore = scores.crossesScore
-        scoreData.noughtsScore = scores.noughtsScore
-    }
-
-    /*private fun updateScores() {
-        val inputStream: InputStream = assets.open(fileName)
-        val jsonString: String = inputStream.bufferedReader().use { it.readText() }
-        inputStream.close()
-        val json: JSONObject = JSONObject(jsonString)
-        json.put("crossesScore", scoreData.crossesScore)
-        json.put("noughtsScore", scoreData.noughtsScore)
-
-        try {
-            val outputStream: OutputStream = assets.openFd(fileName).createOutputStream()
-            outputStream.write(json.toString().toByteArray())
-            outputStream.close()
-        }catch (e: java.lang.Exception){
-            Log.e("TAG", "Exception occurred", e)
-        }
-
-    }*/
 
     private fun initBoard()
     {
+        firstPlayer = intent.getStringExtra("firstPlayer").toString()
+        secondPlayer = intent.getStringExtra("secondPlayer").toString()
+
         boardList.add(binding.a1)
         boardList.add(binding.a2)
         boardList.add(binding.a3)
@@ -82,6 +55,8 @@ class Game3x3 : AppCompatActivity(){
         boardList.add(binding.c1)
         boardList.add(binding.c2)
         boardList.add(binding.c3)
+
+        binding.turnTV.text = "$firstPlayer ( $CROSS )"
     }
 
     fun boardTapped(view: View)
@@ -93,17 +68,17 @@ class Game3x3 : AppCompatActivity(){
         if(checkForVictory(NOUGHT))
         {
             scoreData.noughtsScore++
-            result("Noughts Win!")
+            result("$secondPlayer Win!")
         }
         else if(checkForVictory(CROSS))
         {
             scoreData.crossesScore++
-            result("Crosses Win!")
-        }
-
-        if(fullBoard())
-        {
-            result("Draw")
+            result("$firstPlayer Win!")
+        }else{
+            if(fullBoard())
+            {
+                result("Draw")
+            }
         }
 
     }
@@ -199,9 +174,9 @@ class Game3x3 : AppCompatActivity(){
     {
         var turnText = ""
         if(currentTurn == Turn.CROSS)
-            turnText = "Turn $CROSS"
+            turnText = "$firstPlayer ( $CROSS )"
         else if(currentTurn == Turn.NOUGHT)
-            turnText = "Turn $NOUGHT"
+            turnText = "$secondPlayer ( $NOUGHT )"
 
         binding.turnTV.text = turnText
     }

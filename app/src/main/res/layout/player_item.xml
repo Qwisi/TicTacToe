@@ -21,26 +21,27 @@
 
     <TextView
         android:id="@+id/textViewName"
+        style="@style/text"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        style="@style/text"
-        tools:text="Name"
-        android:layout_marginStart="48dp"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintBottom_toBottomOf="@+id/textViewRank"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textViewRank"
-        app:layout_constraintTop_toTopOf="@+id/textViewRank" />
+        app:layout_constraintTop_toTopOf="@+id/textViewRank"
+        tools:text="Name" />
 
     <TextView
         android:id="@+id/textViewScore"
+        style="@style/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/text"
-        tools:text="6"
         android:layout_marginStart="48dp"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintBottom_toBottomOf="@+id/textViewName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textViewName"
-        app:layout_constraintTop_toTopOf="@+id/textViewName" />
+        app:layout_constraintTop_toTopOf="@+id/textViewName"
+        tools:text="6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
